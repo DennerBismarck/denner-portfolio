@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
+import { LangProvider } from "@/components/LangProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const display = Sora({ subsets: ["latin"], weight: ["600", "700", "800"], variable: "--font-display-sora" });
@@ -18,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.variable} ${display.variable} font-sans antialiased bg-bg text-text`}>
-        {children}
+        <LangProvider>{children}</LangProvider>
       </body>
     </html>
   );
