@@ -7,9 +7,9 @@ export const dict = {
   pt: {
     'nav.about': 'Sobre', 'nav.experience': 'Experiência', 'nav.projects': 'Projetos',
     'nav.skills': 'Skills', 'nav.contact': 'Contato', 'nav.downloadCv': 'Baixar CV',
-    'hero.eyebrow': 'Tech Lead & Fullstack Engineer',
+    'hero.eyebrow': 'Fullstack Engineer',
     'hero.title': 'Construo software robusto, escalável e que resolve problema de verdade.',
-    'hero.subtitle': 'Liderança técnica, arquitetura e entrega — de APIs e backends a web e mobile. Pragmático, direto e de bom humor.',
+    'hero.subtitle': 'Liderança técnica, arquitetura e entrega — de APIs e backends a web e mobile.',
     'hero.ctaProjects': 'Ver projetos', 'hero.ctaCv': 'Baixar CV',
     'about.title': 'Sobre mim',
     'about.p1': 'Sou Denner, dev fullstack e tech lead de Caicó, no Rio Grande do Norte. Vim do Técnico em Informática no IFRN e hoje curso Sistemas de Informação na UFRN. No meio do caminho descobri que o que mais me empolga é desenhar a arquitetura de um sistema e ver ele aguentar o mundo real.',
@@ -31,9 +31,9 @@ export const dict = {
   en: {
     'nav.about': 'About', 'nav.experience': 'Experience', 'nav.projects': 'Projects',
     'nav.skills': 'Skills', 'nav.contact': 'Contact', 'nav.downloadCv': 'Download CV',
-    'hero.eyebrow': 'Tech Lead & Fullstack Engineer',
+    'hero.eyebrow': 'Fullstack Engineer',
     'hero.title': 'I build robust, scalable software that solves real problems.',
-    'hero.subtitle': 'Technical leadership, architecture and delivery — from APIs and backends to web and mobile. Pragmatic, direct and good-humored.',
+    'hero.subtitle': 'Technical leadership, architecture and delivery — from APIs and backends to web and mobile.',
     'hero.ctaProjects': 'View projects', 'hero.ctaCv': 'Download CV',
     'about.title': 'About me',
     'about.p1': "I'm Denner, a fullstack developer and tech lead from Caicó, in Rio Grande do Norte, Brazil. I started with a Technical Degree in IT at IFRN and I'm now studying Information Systems at UFRN. Along the way I found out what excites me most: designing a system's architecture and watching it hold up in the real world.",
