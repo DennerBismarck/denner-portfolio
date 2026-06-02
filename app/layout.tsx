@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Denner Bismarck de Lucena França' }],
   openGraph: {
     title: 'Denner França — Fullstack Engineer',
-    description: 'Arquitetura de software, APIs, web e mobile. Pragmático, direto e de bom humor.',
+    description: 'Arquitetura de software, APIs, web e mobile.',
     type: 'website', locale: 'pt_BR',
   },
   twitter: { card: 'summary_large_image', title: 'Denner França — Fullstack Engineer' },
