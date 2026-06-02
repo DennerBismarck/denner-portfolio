@@ -21,7 +21,7 @@ export function Projects() {
               onClick={() => setActive(p)}
               className="group flex h-full w-full flex-col rounded-2xl border border-borderc bg-surface-2/40 p-5 text-left transition-all hover:-translate-y-1 hover:border-accent hover:shadow-[0_0_30px_-12px_rgba(147,51,234,.6)]"
             >
-              {p.featured && <span className="mb-2 self-start rounded-full bg-accent/15 px-2 py-0.5 text-xs font-medium text-accent-soft">★ {lang === 'pt' ? 'Destaque' : 'Featured'}</span>}
+              {p.featured && <span className="mb-2 self-start rounded-full bg-accent/15 px-2 py-0.5 text-xs font-medium text-accent-soft">★ {t('projects.featured')}</span>}
               <p className="text-xs font-semibold uppercase tracking-wide text-accent-soft">{p.category[lang]}</p>
               <h3 className="mt-1 font-display text-lg font-bold text-text">{p.name}</h3>
               <p className="mt-1 flex-1 text-sm text-muted">{p.tagline[lang]}</p>
@@ -29,7 +29,7 @@ export function Projects() {
                 {p.stack.slice(0, 4).map((s) => <span key={s} className="rounded bg-surface px-2 py-0.5 text-xs text-muted-2">{s}</span>)}
               </div>
               <span className="mt-4 inline-flex items-center gap-1 text-sm text-accent-soft opacity-0 transition-opacity group-hover:opacity-100">
-                {lang === 'pt' ? 'Ver case' : 'View case'} <ArrowUpRight size={14} />
+                {t('projects.viewCase')} <ArrowUpRight size={14} />
               </span>
             </button>
           </Reveal>

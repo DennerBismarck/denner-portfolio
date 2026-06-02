@@ -1,5 +1,5 @@
 'use client'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X } from 'lucide-react'
 import { GithubIcon } from '@/components/ui/icons'
@@ -7,13 +7,66 @@ import { useLang } from '@/lib/i18n'
 import type { Project } from '@/lib/data/projects'
 import { Pill } from '@/components/ui/Pill'
 
+const FOCUSABLE = 'a[href], button, [tabindex]:not([tabindex="-1"])'
+
 export function ProjectModal({ project, onClose }: { project: Project | null; onClose: () => void }) {
   const { t, lang } = useLang()
+  const dialogRef = useRef<HTMLDivElement>(null)
+  const previousFocusRef = useRef<HTMLElement | null>(null)
 
   useEffect(() => {
-    function onKey(e: KeyboardEvent) { if (e.key === 'Escape') onClose() }
-    if (project) { document.addEventListener('keydown', onKey); document.body.style.overflow = 'hidden' }
-    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
+    if (!project) return
+
+    // Save the element that had focus before modal opened
+    previousFocusRef.current = document.activeElement as HTMLElement
+
+    // Move initial focus to the dialog container
+    dialogRef.current?.focus()
+
+    document.body.style.overflow = 'hidden'
+
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        onClose()
+        return
+      }
+
+      if (e.key === 'Tab' && dialogRef.current) {
+        const focusable = Array.from(
+          dialogRef.current.querySelectorAll<HTMLElement>(FOCUSABLE)
+        ).filter((el) => !el.hasAttribute('disabled'))
+
+        if (focusable.length === 0) {
+          e.preventDefault()
+          return
+        }
+
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        const active = document.activeElement as HTMLElement
+
+        if (e.shiftKey) {
+          if (active === first || active === dialogRef.current) {
+            e.preventDefault()
+            last.focus()
+          }
+        } else {
+          if (active === last || active === dialogRef.current) {
+            e.preventDefault()
+            first.focus()
+          }
+        }
+      }
+    }
+
+    document.addEventListener('keydown', onKey)
+
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+      // Restore focus to the previously focused element
+      previousFocusRef.current?.focus()
+    }
   }, [project, onClose])
 
   return (
@@ -25,7 +78,9 @@ export function ProjectModal({ project, onClose }: { project: Project | null; on
           onClick={onClose} role="dialog" aria-modal="true" aria-label={project.name}
         >
           <motion.div
-            className="relative my-auto w-full max-w-2xl rounded-2xl border border-borderc bg-surface p-6 sm:p-8"
+            ref={dialogRef}
+            tabIndex={-1}
+            className="relative my-auto w-full max-w-2xl rounded-2xl border border-borderc bg-surface p-6 sm:p-8 focus:outline-none"
             initial={{ scale: 0.96, y: 12 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 12 }}
             onClick={(e) => e.stopPropagation()}
           >
